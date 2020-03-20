@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 
+const path = require('path')
+
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
 const createWindow = () => {
@@ -9,7 +11,8 @@ const createWindow = () => {
     frame: false,
     // transparent: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js'),
     },
   })
 
